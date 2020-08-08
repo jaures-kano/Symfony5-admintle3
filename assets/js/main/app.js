@@ -4,11 +4,13 @@
  * We recommend including the built version of this JavaScript file
  * (and its CSS file) in your base layout (base.html.twig).
  */
+import 'jquery'
+import 'popper.js'
+import 'bootstrap/dist/js/bootstrap.bundle'
+import 'overlayscrollbars/js/jquery.overlayScrollbars'
+import '@fortawesome/fontawesome-free/js/all.min'
+import '../template/adminlte';
+import '../components/toastr'
 
 // any CSS you import will output into a single css file (app.css in this case)
 import '../../css/main/app.css';
-
-// Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
-// import $ from 'jquery';
-
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
