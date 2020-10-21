@@ -1,0 +1,76 @@
+{% extends 'dashboard_template/index.html.twig' %}
+
+{% block title %} AJOUT DU PERSONNEL | HSS{% endblock %}
+
+{% block body %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12 row">
+                        <h1 class="text-gray-dark">AJOUT DU PERSONNEL</h1>
+                    </div>
+                    <!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">FORMULAIRE D'AJOUT</h3>
+                            </div>
+
+                            <!-- /.card-header -->
+                            {{ form_start(form) }}
+                            <div class="card-body ">
+                                <div class="row">
+
+                                    <div class="col-md-6 mt-3">
+                                        {{ form_widget(form.nom) }}
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        {{ form_widget(form.prenom) }}
+                                    </div>
+
+                                    <div class="col-md-6 mt-3">
+                                        {{ form_widget(form.genre) }}
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        {{ form_widget(form.fonction) }}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <div class="col-md-6 ml-auto">
+                                    <button type="submit" class="btn btn-success col-md-12 right">
+                                        <i class="fas fa-save"></i> Enregistrer
+                                    </button>
+                                </div>
+
+                            </div>
+                            {{ form_end(form) }}
+                            <!-- form start -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

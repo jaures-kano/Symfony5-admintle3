@@ -1,0 +1,29 @@
+{% for module in module %}
+    {% if is_granted(module.granted) %}
+    <div class="col-md-4">
+        <!-- Widget: user widget style 1 -->
+        <div class="card card-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header text-white"
+                 style="background: url('{{ module.image }}')
+                         center center;">
+            </div>
+            <div class="widget-user-image">
+                <img class="img-circle" src="{{ module.icons }}" alt="User Avatar">
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{ path(module.target) }}" class="text-olive shadow-sm"><h5 class="text-left">{{ module.nom }}</h5></a>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="text-left">{{ module.description }}</span>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+        <!-- /.widget-user -->
+    </div>
+    {% endif %}
+{% endfor %}

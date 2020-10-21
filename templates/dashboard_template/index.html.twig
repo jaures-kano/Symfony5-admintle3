@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Accuiel | HSS{% endblock %}</title>
     {{ encore_entry_link_tags('app') }}
     {% block stylesheets %}
     {% endblock %}
 </head>
-<body class="back sidebar-mini  sidebar-collapse layout-fixed navbar-expand navbar-white navbar-light layout-footer-fixed">
+<body class="navbar-expand layout-navbar-fixed  sidebar-collapse layout-fixed layout-footer-fixed sidebar-closed">
 <div class="wrapper">
     {% include('dashboard_template/includes/_nav_bar.html.twig') %}
     {% include('dashboard_template/includes/_sidebar_left.html.twig') %}
@@ -22,16 +23,16 @@
 {% block javascripts %}{% endblock %}
 <script>
     {% for message in app.flashes('success') %}
-        notification( 'success' , 'Tout est ok !' , {{ message }} )
+        window.notification( 'success' , 'Tout est ok !' , '{{ message }}' )
     {% endfor %}
-    {% for message in app.flashes('success') %}
-        notification( 'danger' , 'Attention !' , {{ message }} )
+    {% for message in app.flashes('error') %}
+        window.notification( 'error' , 'Attention !' , '{{ message }}' )
     {% endfor %}
-    {% for message in app.flashes('success') %}
-        notification( 'warning' , 'Important !' , {{ message }} )
+    {% for message in app.flashes('warning') %}
+        window.notification( 'warning' , 'Important !' , '{{ message }}' )
     {% endfor %}
-    {% for message in app.flashes('success') %}
-        notification( 'info' , 'Information utile !' , {{ message }} )
+    {% for message in app.flashes('info') %}
+        window.notification( 'info' , 'Information utile !' , '{{ message }}' )
     {% endfor %}
 </script>
 </body>

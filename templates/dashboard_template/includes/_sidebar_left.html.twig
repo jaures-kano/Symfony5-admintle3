@@ -1,23 +1,34 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-dark-olive">
+
     <!-- Brand Logo -->
     <a href="/" class="brand-link navbar-olive">
         <img src="{{ asset('images/template_images/AdminLTELogo.png') }}"
              alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">HS Managment</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
+
+        {% if app.user %}
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('images/template_images/user7-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                {% if app.user.imageName %}
+                    <img src="{{ asset('images/users_images/' ~ app.user.imageName)| imagine_filter('thumb_mini') }}"
+                         class="img-circle elevation-2" alt="User Image">
+                {% else %}
+                    <img src="{{ asset('images/template_images/avatar.png')| imagine_filter('thumb_mini') }}"
+                         class="img-circle elevation-2" alt="User Image">
+                {% endif %}
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <span class="d-block text-white">{{ app.user.fonction|upper }}</span>
+                <h6 class="d-block text-white text-sm">{{ app.user.nom|upper }} {{ app.user.prenom|upper }}</h6>
+                <h6 class="d-block text-sm text-olive">En ligne</h6>
             </div>
         </div>
 
@@ -28,17 +39,18 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="{{ path('app_home') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Tableau de board
+                            Tableau de bord
                         </p>
                     </a>
                 </li>
-
+                {% include 'dashboard_template/includes/sidebar_include/_personnels.html.twig' %}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
+        {% endif %}
     </div>
     <!-- /.sidebar -->
 </aside>

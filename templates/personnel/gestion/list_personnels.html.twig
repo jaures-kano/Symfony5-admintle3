@@ -1,0 +1,115 @@
+{% extends 'dashboard_template/index.html.twig' %}
+
+{% block title %} GESTION DU PERSONNEL | HSS {% endblock %}
+
+
+{% block body %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">GESTION DU PERSONNEL</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Liste du personnel</h3>
+                                <div class="card-tools">
+                                    <a href="{{ path('ajout_personnel') }}"
+                                       class="btn-sm mr-2 rounded-lg btn-success shadow">
+                                        <i class="fas fa-user-plus"></i> Ajouter un utilisateur
+                                    </a>
+
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+
+                                <table id="datatable" class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>NOM ET PRENOM</th>
+                                        <th>GENRE</th>
+                                        <th>FONCTION</th>
+                                        <th class="w-25">ROLES</th>
+                                        <th>STATUT</th>
+                                        {% if is_granted('ROLE_FOUNDER') %}
+                                        <th>REINITIALISER</th>
+                                        {% endif %}
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for personnel in personnels %}
+                                    <tr>
+                                        <td>{{ personnel.nom|upper }} {{ personnel.prenom|upper }}</td>
+                                        <td>
+                                            {% set genre = personnel.genre %}
+                                            {% if genre == 'HOMME' %}
+                                                <span class="text-primary"><i class="fas fa-male"></i> HOMME</span>
+                                            {% elseif genre == 'FEMME' %}
+                                                <span class="text-pink"><i class="fas fa-female"></i> FEMME</span>
+                                            {% else %}
+
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ personnel.fonction|upper }}</td>
+                                        <td>
+                                            {% set roles = personnel.roles %}
+                                            <div class="row">
+                                                {% for role in roles %}
+                                                    <span class="btn-sm btn-primary text-sm m-2 shadow-sm">
+                                                    <i class="fas fa-tag"></i> {{ role }}
+                                                </span>
+                                                {% endfor %}
+                                            </div>
+                                        </td>
+                                        <td class="text-sm">
+                                            {% if personnel.isConnected == 1 %}
+                                               <span class="text-success text-sm">
+                                                   <i class="fas fa-circle-notch"></i>
+                                                   En ligne {{ personnel.lastConnexion ? personnel.lastConnexion|ago : ' ' }}
+                                               </span>
+                                            {% else %}
+                                                <span class="text-gray-dark text-sm">
+                                                    <i class="fas fa-stop-circle"></i>
+                                                    Déconnecter {{ personnel.lastDeconnexion ? personnel.lastDeconnexion|ago : ' ' }}
+                                                </span>
+                                            {% endif %}
+                                        </td>
+                                        {% if is_granted('ROLE_FOUNDER') %}
+                                        <td class="text-center">
+                                            <a href="{{ path('password_reset', {'id': personnel.id }) }}" class="btn btn-outline-primary">
+                                                <i class="fas fa-history"></i>
+                                            </a>
+                                        </td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

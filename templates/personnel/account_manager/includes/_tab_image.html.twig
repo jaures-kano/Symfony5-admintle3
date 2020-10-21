@@ -1,0 +1,22 @@
+{{ form_start(formImage , { 'attr' : { 'class' : 'm-auto col-md-10' }}) }}
+    <div class="col-md-12 mt-3">
+        {% if app.user.imageName %}
+            <img class="img-fluid img-circle pad w-100 shadow"
+                 src="{{ asset('images/users_images/' ~ app.user.imageName) | imagine_filter('thumb_big') }}" alt="Photo">
+        {% else %}
+            <img class="img-fluid img-circle pad w-100 shadow"
+                 src="{{ asset('images/template_images/avatar.png')| imagine_filter('thumb_big') }}" alt="Photo">
+        {% endif %}
+    </div>
+
+    <div class="col-md-12 mt-3">
+        {{ form_widget(formImage.imageFile , { 'attr' : { 'placeholder' : 'Cliquez pour choisir une image' }}) }}
+    </div>
+
+    <div class="col-md-12 mt-3">
+        <button type="submit" class="btn btn-primary col-md-12 right">
+            <i class="fas fa-save"></i> Valider
+        </button>
+    </div>
+{{ form_end(formImage) }}
+<!-- /.tab-pane -->

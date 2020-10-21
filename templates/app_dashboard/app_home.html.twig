@@ -1,0 +1,48 @@
+{% extends 'dashboard_template/index.html.twig' %}
+
+{% block title %} TABLEAU DE BORD | HSS {% endblock %}
+
+{% block body %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">TABLEAU DE BORD</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    {% include 'app_dashboard/includes/_module.html.twig' %}
+                </div>
+
+                <div class="row mb-2 mt-2 border-bottom">
+                    <div class="col-sm-6 mb-1">
+                        <h4 class="m-0 text-dark">
+                            <i class="fas fa-newspaper"></i> ACTIVITES
+                        </h4>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+
+                <div class="row mt-4">
+
+                    <div class="col-md-6">
+                        {% include 'app_dashboard/includes/_desc.html.twig' %}
+                    </div>
+
+                    <div class="col-md-6">
+                        {% include 'app_dashboard/includes/_about_me.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -28,20 +28,27 @@
                 <span class="dropdown-item dropdown-header">Profile</span>
 
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item text-gray">
+                <a href="{{ path('app_home') }}" class="dropdown-item text-gray">
                     Tableau de bord
                     <span class="float-right text-muted text-sm"><i class="fas fa-sign mr-2"></i> </span>
                 </a>
 
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item text-gray">
-                    Communauté
-                    <span class="float-right text-muted text-sm"><i class="fas fa-users mr-2"></i> </span>
+                    Decaissements
+                    <span class="float-right text-muted text-sm"><i class="fas fa-hand-holding-usd mr-2"></i> </span>
                 </a>
 
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer text-gray">Se connecter
-                    <i class="fas fa-sign-out-alt mr-2"></i></a>
+                <a href="{{ path('account_guard') }}" class="dropdown-item text-gray">
+                    Gestion de compte
+                    <span class="float-right text-muted text-sm"><i class="fas fa-cog mr-2"></i> </span>
+                </a>
+
+                <div class="dropdown-divider"></div>
+                <a href="{{ path('app_logout') }}" class="dropdown-item dropdown-footer text-gray">Se connecter
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                </a>
             </div>
         </li>
 

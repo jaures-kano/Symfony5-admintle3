@@ -1,0 +1,111 @@
+{% extends 'dashboard_template/index.html.twig' %}
+
+{% block title %} GESTIONS DES ROLES | HSS{% endblock %}
+
+{% block body %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12 row">
+                        <h1 class="text-gray-dark">GESTIONS DES ROLES</h1>
+                    </div>
+                    <!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">LISTE DES UTILISATEURS</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body ">
+                                <div class="row">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>NOM ET PRENOM</th>
+                                            <th>FONCTION</th>
+                                            <th>ATTRIBUER</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        {% for user in utilisateurs %}
+                                            <tr>
+                                                <td>{{ user.nom|upper }} {{ user.prenom|upper }}</td>
+                                                <td>{{ user.fonction|upper }}</td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-success"
+                                                       href="{{ path('gestion_user_roles', {'id': user.id }) }}">
+                                                        <i class="fas fa-link"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+
+                            </div>
+                            <!-- form start -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">LISTE DES ROLES</h3>
+                            </div>
+
+                            <!-- /.card-header -->
+                            {% if utilisateur  %}
+                            {{ form_start(form) }}
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-md-12 mt-3">
+                                        {{ form_widget(form.roles) }}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="col-md-6 ml-auto">
+                                    <button type="submit" class="btn btn-success col-md-12 right">
+                                        <i class="fas fa-save"></i> Enregistrer
+                                    </button>
+                                </div>
+
+                            </div>
+                            {{ form_end(form) }}
+                            {% endif %}
+                            <!-- form start -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

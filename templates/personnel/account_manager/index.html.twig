@@ -1,0 +1,103 @@
+{% extends 'dashboard_template/index.html.twig' %}
+
+{% block title %} ACCOUNT MANAGMENT | HSM{% endblock %}
+
+{% block body %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Profile</h1>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-5">
+
+                        {{ include('app_dashboard/includes/_desc.html.twig') }}
+
+                        {{ include('app_dashboard/includes/_about_me.html.twig') }}
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-7">
+                        <div class="card card-olive card-outline">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fas fa-cog"></i>
+                                    Parametre
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5 col-sm-3">
+                                        <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab"
+                                             role="tablist" aria-orientation="vertical">
+
+                                            <a class="nav-link active" id="vert-info-tab" data-toggle="pill"
+                                               href="#info" role="tab" aria-controls="info-tab"
+                                               aria-selected="true"><i class="fas fa-user-cog"></i>  Information
+                                            </a>
+
+                                            <a class="nav-link" id="vert-photo-tab" data-toggle="pill"
+                                               href="#photo" role="tab" aria-controls="photo-tab"
+                                               aria-selected="false">
+                                                <i class="fas fa-image"></i> Photo de profil
+                                            </a>
+
+                                            <a class="nav-link" id="pass-tab" data-toggle="pill"
+                                               href="#pass" role="tab"
+                                               aria-controls="pass-tab" aria-selected="false">
+                                                <i class="fas fa-user-lock"></i> Mot de passe
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-7 col-sm-9">
+
+                                        <div class="tab-content" id="vert-tabs-tabContent">
+
+                                            <div class="tab-pane text-left fade show active"
+                                                 id="info" role="tabpanel"
+                                                 aria-labelledby="info-tab">
+                                                {{ include('personnel/account_manager/includes/_tab_info.html.twig') }}
+                                            </div>
+
+                                            <div class="tab-pane fade" id="photo"
+                                                 role="tabpanel" aria-labelledby="photo-tab">
+                                                {{ include('personnel/account_manager/includes/_tab_image.html.twig') }}
+                                            </div>
+
+                                            <div class="tab-pane fade" id="pass"
+                                                 role="tabpanel" aria-labelledby="pass-tab">
+                                                {{ include('personnel/account_manager/includes/_tab_password.html.twig') }}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>
+                        <!-- /.card -->
+
+                        </div>
+                        <!-- /.nav-tabs-custom -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+{% endblock %}

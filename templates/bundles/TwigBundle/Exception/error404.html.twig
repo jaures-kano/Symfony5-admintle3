@@ -1,0 +1,46 @@
+{% extends 'dashboard_template/index.html.twig' %}
+
+{% block title %} ERREUR 404 | HSM{% endblock %}
+
+{% block body %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Erreur 404</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('app_home') }}">Tableau de bord</a></li>
+                            <li class="breadcrumb-item active">Erreur 404</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="error-page mr-auto">
+                <h2 class="headline text-olive"> 404</h2>
+
+                <div class="error-content">
+                    <h3><i class="fas fa-exclamation-triangle text-olive"></i> Oops! Page non trouvée.</h3>
+
+                    <p>
+                        La page que vous demandez n'as pas été trouvé. <br>
+                        Bien vouloir <a href="{{ path('app_home') }}">Revenir au tableau de bord</a>
+                    </p>
+
+                </div>
+                <!-- /.error-content -->
+            </div>
+            <!-- /.error-page -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+{% endblock %}

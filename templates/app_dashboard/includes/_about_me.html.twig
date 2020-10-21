@@ -1,0 +1,34 @@
+<!-- About Me Box -->
+<div class="card card-olive">
+    <div class="card-header">
+        <h3 class="card-title">A propos de moi</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <strong><i class="fas fa-book mr-1"></i> Fonction</strong>
+
+        <p class="text-muted">
+            {{ app.user.fonction|upper }}
+        </p>
+
+        <hr>
+
+
+        <strong><i class="fas fa-pencil-alt mr-1"></i> Roles</strong>
+
+        <p class="text-muted row">
+            {% set roles = app.user.roles %}
+            {% for role in roles %}
+            <span class="btn-sm bg-olive m-1 shadow-sm">
+                <i class="fas fa-tag fa-sm"></i> {{ role }}
+            </span>
+            {% endfor %}
+
+        </p>
+
+        <hr>
+
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
